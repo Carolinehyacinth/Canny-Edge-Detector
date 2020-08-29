@@ -1,0 +1,1 @@
+g++ ProdCons.cpp -I$SYSTEMC/include -L$SYSTEMC/lib-linux64  -Xlinker -R -Xlinker $SYSTEMC/lib-linux64 -lsystemc -o ProdCons

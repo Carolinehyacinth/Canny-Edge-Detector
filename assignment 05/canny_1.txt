@@ -1,0 +1,252 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+#include "systemc.h"
+
+#define VERBOSE 0
+#define NOEDGE 255
+#define POSSIBLE_EDGE 128
+#define EDGE 0
+#define BOOSTBLURFACTOR 90.0
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+#define SIGMA 0.6
+#define TLOW  0.3
+#define THIGH 0.8
+#define COLS 320
+#define ROWS 240
+#define SIZE COLS*ROWS
+#define WINSIZE 21
+
+class IW: public sc_interface
+{
+  public:
+    virtual void Send(char) = 0;
+};
+
+class IR: public sc_interface
+{
+  public:
+    virtual char Receive(void) = 0;
+};
+
+class Channel: public sc_channel, public IW, public IR
+{
+  public:
+    Channel(sc_module_name name) : sc_channel(name) {}
+    void Send(char *image_1) {
+        Image = image_1;
+        Req.notify(SC_ZERO_TIME);
+        wait(Ack);
+    }
+    
+    char *Receive(void) {
+        char *image_2;
+        wait(Req);
+        image_2 = Image;
+        Ack.notify(SC_ZERO_TIME);
+        return image_2;
+    }
+  private:
+    char Image[SIZE];
+    sc_event Req, Ack;
+};
+
+class Stimulus: public sc_module
+{
+  public:
+    sc_port<IW>out;
+    SC_HAS_PROCESS(Stimulus);
+
+    Stimulus(sc_module_name name) : sc_module(name)
+    {
+        SC_THREAD(main);
+    }
+    /******************************************************************************
+    * Function: read_pgm_image
+    * Purpose: This function reads in an image in PGM format. The image can be
+    * read in from either a file or from standard input. The image is only read
+    * from standard input when infilename = NULL. Because the PGM format includes
+    * the number of columns and the number of rows in the image, these are read
+    * from the file. Memory to store the image is allocated OUTSIDE this function.
+    * The found image size is checked against the expected rows and cols.
+    * All comments in the header are discarded in the process of reading the
+    * image. Upon failure, this function returns 0, upon sucess it returns 1.
+    ******************************************************************************/
+    int read_pgm_image(const char *infilename, unsigned char *image, int rows, int cols)
+    {
+       FILE *fp;
+       char buf[71];
+       int r, c;
+
+       /***************************************************************************
+       * Open the input image file for reading if a filename was given. If no
+       * filename was provided, set fp to read from standard input.
+       ***************************************************************************/
+       if(infilename == NULL) fp = stdin;
+       else{
+          if((fp = fopen(infilename, "r")) == NULL){
+             fprintf(stderr, "Error reading the file %s in read_pgm_image().\n",
+                infilename);
+             return(0);
+          }
+       }
+
+       /***************************************************************************
+       * Verify that the image is in PGM format, read in the number of columns
+       * and rows in the image and scan past all of the header information.
+       ***************************************************************************/
+       fgets(buf, 70, fp);
+       if(strncmp(buf, "P5", 2) != 0){
+          fprintf(stderr, "The file %s is not in PGM format in ", infilename);
+          fprintf(stderr, "read_pgm_image().\n");
+          if(fp != stdin) fclose(fp);
+          return(0);
+       }
+       do{ fgets(buf, 70, fp); }while(buf[0] == '#');  /* skip all comment lines */
+       sscanf(buf, "%d %d", &c, &r);
+       if(c != cols || r != rows){
+          fprintf(stderr, "The file %s is not a %d by %d image in ", infilename, cols, rows);
+          fprintf(stderr, "read_pgm_image().\n");
+          if(fp != stdin) fclose(fp);
+          return(0);
+       }
+       do{ fgets(buf, 70, fp); }while(buf[0] == '#');  /* skip all comment lines */
+
+       /***************************************************************************
+       * Read the image from the file.
+      ***************************************************************************/
+       if((unsigned)rows != fread(image, cols, rows, fp)){
+          fprintf(stderr, "Error reading the image data in read_pgm_image().\n");
+          if(fp != stdin) fclose(fp);
+          return(0);
+       }
+
+       if(fp != stdin) fclose(fp);
+       return(1);
+    }
+    void main()
+    {
+        int i;
+        for 
+    }
+};
+
+class DataIn: public sc_module
+{
+  public:
+    sc_port<IR>in;
+    sc_port<IW>out;
+    SC_HAS_PROCESS(DataIn);
+
+    DataIn(sc_module_name name) : sc_module(name)
+    {
+        SC_THREAD(main);
+    }
+
+    void main()
+    {
+        
+    }
+
+};
+class DUT: public sc_module
+{
+  public:
+    sc_port<IR>in;
+    sc_port<IW>out;
+    SC_HAS_PROCESS(DUT);
+
+    DUT(sc_module_name name) : sc_module(name)
+    {
+        SC_THREAD(main);
+    }
+
+    void main()
+    {
+        
+    }
+
+};
+class DataOut: public sc_module
+{
+  public:
+    sc_port<IR>in;
+    sc_port<IW>out;
+    SC_HAS_PROCESS(DataOut);
+
+    DataOut(sc_module_name name) : sc_module(name)
+    {
+        SC_THREAD(main);
+    }
+
+    void main()
+    {
+        
+    }
+
+};
+class Platform: public sc_module
+{
+  public:
+    sc_port<IR>in;
+    sc_port<IW>out;
+    SC_HAS_PROCESS(Platform);
+
+    Platform(sc_module_name name) : sc_module(name)
+    {
+        SC_THREAD(main);
+    }
+
+    void main()
+    {
+        
+    }
+
+};
+class Monitor: public sc_module
+{
+  public:
+    sc_port<IR>in;
+    SC_HAS_PROCESS(Monitor);
+
+    Monitor(sc_module_name name) : sc_module(name)
+    {
+        SC_THREAD(main);
+    }
+
+    void main()
+    {
+        
+    }
+
+};
+
+
+class top: public sc_module
+{
+  public:
+    C *ch;
+    Prod *producer;
+    Cons *consumer;
+    
+    top(sc_module_name name) : sc_module(name)
+    {
+        ch = new C("c");
+        producer = new Prod("prod");
+        producer->out(*ch);
+        consumer = new Cons("cons");
+        consumer->in(*ch);
+    }
+    
+};
+
+int sc_main(int, char *[])
+{
+    top Top("Top");
+    sc_start();
+    return 0;
+}

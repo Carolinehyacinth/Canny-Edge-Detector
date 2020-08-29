@@ -1,0 +1,42 @@
+Main starts.
+Producer starts.
+Producer sends 'B'.
+Consumer starts.
+Consumer received 'B'.
+Producer sends 'e'.
+Consumer received 'e'.
+Producer sends 'a'.
+Consumer received 'a'.
+Producer sends 'n'.
+Consumer received 'n'.
+Producer sends 's'.
+Consumer received 's'.
+Producer sends ' '.
+Consumer received ' '.
+Producer sends 'a'.
+Consumer received 'a'.
+Producer sends 'n'.
+Consumer received 'n'.
+Producer sends 'd'.
+Consumer received 'd'.
+Producer sends ' '.
+Consumer received ' '.
+Producer sends 'P'.
+Consumer received 'P'.
+Producer sends 'o'.
+Consumer received 'o'.
+Producer sends 't'.
+Consumer received 't'.
+Producer sends 'a'.
+Consumer received 'a'.
+Producer sends 't'.
+Consumer received 't'.
+Producer sends 'o'.
+Consumer received 'o'.
+Producer sends 'e'.
+Consumer received 'e'.
+Producer sends 's'.
+Consumer received 's'.
+Consumer done.
+Producer done.
+Main done.

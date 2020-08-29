@@ -1,0 +1,88 @@
+#include <stdio.h>
+
+interface IS
+{
+    void Send(char);
+};
+interface IR
+{
+    char Receive(void);
+};
+
+channel C implements IS, IR
+{
+    event Req;
+    char Data;
+    event Ack;
+  
+    void Send(char Smessage)
+    {
+        if (Smessage != '\0') printf("Producer sends '%c'.\n", Smessage);
+        Data = Smessage;
+        notify Req;
+        wait Ack;
+    }
+    char Receive(void)
+    {
+        char Rmessage;
+        wait Req;
+        Rmessage = Data;
+        notify Ack;
+        if (Rmessage != '\0')printf("Consumer received '%c'.\n", Rmessage);
+        return Rmessage;
+    }
+};
+
+
+
+behavior Producer(IS Port)
+{
+    char Smessage;
+    char message[] = "Beans and Potatoes";
+    int i;
+    void main(void) 
+    { 
+        printf("Producer starts.\n");
+        i = 0;
+	while(message[i] != '\0')
+	{
+	    Smessage = message[i]; 
+            Port.Send(Smessage);
+	    i++;
+	}
+        Port.Send('\0');
+        printf("Producer done.\n");
+    }
+};
+
+behavior Consumer(IR Port)
+{
+    char Rmessage;
+    void main(void)
+    {
+        printf("Consumer starts.\n");
+        do {
+            Rmessage = Port.Receive();
+        } while(Rmessage != '\0');
+        printf("Consumer done.\n");
+    }
+};
+
+behavior Main
+{
+    C c;
+    Producer producer(c);
+    Consumer consumer(c);
+    int i;
+    int main(void) 
+    {
+        printf("Main starts.\n");
+        par
+        {
+            producer;
+            consumer;
+        }
+        printf("Main done.\n");
+        return 0;
+    }
+};

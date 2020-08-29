@@ -1,0 +1,17 @@
+Assignment 4       80729166 Yuxin Jiang
+Step 1:
+After adding the header file <systemc.h>, there are two kinds of warnings in the code during this step.
+1) "deprecated conversion from string constant to 'char*'" in the sc_main(): 
+For this warning, I set the parameter "comment" as const char.
+2) "comparison between signed and unsigned integer expressions" in the read_pgm_image() and write_pgm_image(): 
+The warning comes from the comparison between the parameter "row" which is a signed integer and the results of the fread() and fwrite() which are unsigned integers. So I add a cast of type from unsigned int to int for the results of the fread() and fwrite(). 
+
+Step 2:
+1) replace malloc() and corresponding free()
+The first malloc() and corresponding free() are used in the read_pgm_image(). So I create an array "image_temp[rows*cols]" in the sc_main() and use the array to replace the malloc() and remove the  corresponding free().
+The other three malloc() and corresponding free() in the read_ppm_image() are never used. So I remove them directly.
+2)  remove all functions from the code that are not used
+Though tests, I find 4 functions from the code that are not used and they are radian_direction(), angle_radians(), read_ppm_image() and write_ppm_image(). However, the radian_direction() may be called in the canny() and the angle_radians() may be called in the radian_direction(). So I remove these four functions and some codes in the canny() about radian_direction().
+
+Step 3:
+After removing the unused functions, there are some functions calls to calloc(). For variables "edge", "nms", "smoothedim", "delta_x", "delta_y", "magnitude", "tempim" and "kernel", I create arrays "edge_temp[rows*cols]", "nms_temp[rows*cols]", "smoothedim_temp", "delta_x_temp[rows*cols]", "delta_y_temp[rows*cols]", "magnitude_temp[rows*cols]", "tempim_temp[rows*cols]"and "kernel_temp[windowsize], and use them to replace these calloc() and remove all the corresponding free().

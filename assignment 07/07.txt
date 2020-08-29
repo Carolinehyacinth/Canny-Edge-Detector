@@ -1,0 +1,33 @@
+ÈíÁ¬½Ó£º
+ln -s ~eecs222/public/video video
+
+¿ªÆôsystemc:
+setenv SYSTEMC /opt/pkg/systemc-2.3.1
+±àÒë£º
+g++ Canny_1.cpp -I$SYSTEMC/include -L$SYSTEMC/lib-linux64  -Xlinker -R -Xlinker $SYSTEMC/lib-linux64 -lsystemc -Wall -o canny_1 -pg
+./canny
+gprof canny_1 gmon.out -p > flat-report
+gprof canny_1 gmon.out -q > callgraph-report_1
+
+
+
+limit stacksize 256 megabytes
+
+ln ¨Cs /users/grad2/doemer/eecs222/public/video video
+
+ÏÔÊ¾Í¼Ïñ: 
+eog golfcart.pgm_s_0.60_l_0.30_h_0.80.pgm
+
+~eecs222/bin/turnin.sh
+
+Whole time: 73.960000 sec.
+Receive_Image: 0.000000 sec.
+Gaussian_Kernel: 0.000000 sec.
+BlurX: 18.650000 sec.
+BlurY: 20.350000 sec.
+Derivative_X_Y: 6.690000 sec.
+Magnitude_X_Y: 7.800000 sec.
+Non_Max_Supp: 2.580000 sec.
+Apply_Hysteresis: 3.930000 sec.
+Stimulus: 0.000003 sec.
+Monitor: 0.000004 sec.

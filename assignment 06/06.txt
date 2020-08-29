@@ -1,0 +1,14 @@
+¿ªÆôsystemc:
+setenv SYSTEMC /opt/pkg/systemc-2.3.1
+±àÒë£º
+g++ Canny_4.cpp -I$SYSTEMC/include -L$SYSTEMC/lib-linux64  -Xlinker -R -Xlinker $SYSTEMC/lib-linux64 -lsystemc -Wall -o canny
+
+limit stacksize 256 megabytes
+
+ln ¨Cs /users/grad2/doemer/eecs222/public/video video
+
+ÏÔÊ¾Í¼Ïñ: 
+eog golfcart.pgm_s_0.60_l_0.30_h_0.80.pgm
+
+~eecs222/bin/turnin.sh
+

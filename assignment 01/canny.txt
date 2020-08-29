@@ -1,0 +1,14 @@
+Step 4 Bug fix in non_max_supp function
+For omitted pixels in the picture, I fix the two conditions
+ of terminating the loops from "nrows-2" and "ncols-2" to "nrows-1" and "ncols-1". And after the bug fix, the pictures have a few differences which are 123 different pixels.
+
+Step 5 Clean-up the source code so that there are no compilation warnings
+There are three kinds of warnings in this code.
+
+The first kind of warnings is about unused variables, such as "pos", "c" and "r" in the function "canny", and "sumpix", "cc", "rr", "i" and "lowcount" in the function "apply_hysteresis". To solve these warnings, I delete the initialization statements of the unused variables.
+
+The second kind of warnings is about the return of the functions "non_max_supp" and "follow_edge". In the original code, these two functions have not set the types of the two return. So according to the original code, I set the types as "void".
+
+The third kind of warnings is about the return of the main function. Because of the specificity of the main function, I must set the return of the main function as "int" and add one statement "exit(0);" at the end of the code.
+
+After my changes, there are no warning showed.

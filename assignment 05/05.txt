@@ -1,0 +1,10 @@
+¿ªÆôsystemc:
+setenv SYSTEMC /opt/pkg/systemc-2.3.1
+±àÒë£º
+g++ Canny_3.cpp -I$SYSTEMC/include -L$SYSTEMC/lib-linux64  -Xlinker -R -Xlinker $SYSTEMC/lib-linux64 -lsystemc -Wall -o canny
+
+limit stacksize 128 megabytes
+
+ÏÔÊ¾Í¼Ïñ: 
+eog golfcart.pgm_s_0.60_l_0.30_h_0.80.pgm
+

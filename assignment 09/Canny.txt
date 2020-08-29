@@ -1,0 +1,143 @@
+Assignment 9 Yuxin Jiang 80729166
+
+step 1:
+Tgk =  0.00 ms / 0.00 ms = 1.000
+Tbx =  6760 ms / 1260 ms = 5.365
+Tby =  7930 ms / 1630 ms = 4.865
+Tde =  2380 ms /  450 ms = 5.289
+Tma =  2110 ms /  970 ms = 2.175
+Tnm =  2560 ms / 1570 ms = 1.631
+Tah =  2680 ms /  900 ms = 2.978
+Tot = 24420 ms / 6780 ms = 3.602
+
+Model       Frame Delay     Throughput    Total time
+CannyA9_step2       4904 ms     2.604 FPS     8746 ms
+CannyA9_step3       4664 ms     2.747 FPS       8338 ms
+
+In my opinion, this change is worth it for our real-time video goal. It is because the time can be improved by 5 percent through this change. Although the new outputs have some differences, which are about 8 percent, with the original outputs, the main information is still contained in the new pictures. So the differences have little effect. As a result of the little bad effect and the improvement of time, I think this change is worthy.
+
+step 2:
+      0 s: Stimulus sent frame  1.
+      0 s: Stimulus sent frame  2.
+      0 s: Stimulus sent frame  3.
+      0 s: Stimulus sent frame  4.
+      0 s: Stimulus sent frame  5.
+      0 s: Stimulus sent frame  6.
+    94 ms: Stimulus sent frame  7.
+   188 ms: Stimulus sent frame  8.
+   282 ms: Stimulus sent frame  9.
+   376 ms: Stimulus sent frame 10.
+   470 ms: Stimulus sent frame 11.
+   618 ms: Stimulus sent frame 12.
+  1154 ms: Stimulus sent frame 13.
+  1450 ms: Monitor received frame  1 with  1450 ms delay.
+  1450 ms:   1.450 seconds after previous frame,  0.690 FPS.
+  1538 ms: Stimulus sent frame 14.
+  1834 ms: Monitor received frame  2 with  1834 ms delay.
+  1834 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  1922 ms: Stimulus sent frame 15.
+  2218 ms: Monitor received frame  3 with  2218 ms delay.
+  2218 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  2306 ms: Stimulus sent frame 16.
+  2602 ms: Monitor received frame  4 with  2602 ms delay.
+  2602 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  2690 ms: Stimulus sent frame 17.
+  2986 ms: Monitor received frame  5 with  2986 ms delay.
+  2986 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  3074 ms: Stimulus sent frame 18.
+  3370 ms: Monitor received frame  6 with  3370 ms delay.
+  3370 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  3458 ms: Stimulus sent frame 19.
+  3754 ms: Monitor received frame  7 with  3660 ms delay.
+  3754 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  3842 ms: Stimulus sent frame 20.
+  4138 ms: Monitor received frame  8 with  3950 ms delay.
+  4138 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  4522 ms: Monitor received frame  9 with  4240 ms delay.
+  4522 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  4906 ms: Monitor received frame 10 with  4530 ms delay.
+  4906 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  5290 ms: Monitor received frame 11 with  4820 ms delay.
+  5290 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  5674 ms: Monitor received frame 12 with  5056 ms delay.
+  5674 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  6058 ms: Monitor received frame 13 with  4904 ms delay.
+  6058 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  6442 ms: Monitor received frame 14 with  4904 ms delay.
+  6442 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  6826 ms: Monitor received frame 15 with  4904 ms delay.
+  6826 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  7210 ms: Monitor received frame 16 with  4904 ms delay.
+  7210 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  7594 ms: Monitor received frame 17 with  4904 ms delay.
+  7594 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  7978 ms: Monitor received frame 18 with  4904 ms delay.
+  7978 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  8362 ms: Monitor received frame 19 with  4904 ms delay.
+  8362 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  8746 ms: Monitor received frame 20 with  4904 ms delay.
+  8746 ms:   0.384 seconds after previous frame,  2.604 FPS.
+  8746 ms: Monitor exits simulation.
+
+step 3:
+      0 s: Stimulus sent frame  1.
+      0 s: Stimulus sent frame  2.
+      0 s: Stimulus sent frame  3.
+      0 s: Stimulus sent frame  4.
+      0 s: Stimulus sent frame  5.
+      0 s: Stimulus sent frame  6.
+    94 ms: Stimulus sent frame  7.
+   188 ms: Stimulus sent frame  8.
+   282 ms: Stimulus sent frame  9.
+   376 ms: Stimulus sent frame 10.
+   470 ms: Stimulus sent frame 11.
+   618 ms: Stimulus sent frame 12.
+  1126 ms: Stimulus sent frame 13.
+  1422 ms: Monitor received frame  1 with  1422 ms delay.
+  1422 ms:   1.422 seconds after previous frame,  0.703 FPS.
+  1490 ms: Stimulus sent frame 14.
+  1786 ms: Monitor received frame  2 with  1786 ms delay.
+  1786 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  1854 ms: Stimulus sent frame 15.
+  2150 ms: Monitor received frame  3 with  2150 ms delay.
+  2150 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  2218 ms: Stimulus sent frame 16.
+  2514 ms: Monitor received frame  4 with  2514 ms delay.
+  2514 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  2582 ms: Stimulus sent frame 17.
+  2878 ms: Monitor received frame  5 with  2878 ms delay.
+  2878 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  2946 ms: Stimulus sent frame 18.
+  3242 ms: Monitor received frame  6 with  3242 ms delay.
+  3242 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  3310 ms: Stimulus sent frame 19.
+  3606 ms: Monitor received frame  7 with  3512 ms delay.
+  3606 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  3674 ms: Stimulus sent frame 20.
+  3970 ms: Monitor received frame  8 with  3782 ms delay.
+  3970 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  4334 ms: Monitor received frame  9 with  4052 ms delay.
+  4334 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  4698 ms: Monitor received frame 10 with  4322 ms delay.
+  4698 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  5062 ms: Monitor received frame 11 with  4592 ms delay.
+  5062 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  5426 ms: Monitor received frame 12 with  4808 ms delay.
+  5426 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  5790 ms: Monitor received frame 13 with  4664 ms delay.
+  5790 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  6154 ms: Monitor received frame 14 with  4664 ms delay.
+  6154 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  6518 ms: Monitor received frame 15 with  4664 ms delay.
+  6518 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  6882 ms: Monitor received frame 16 with  4664 ms delay.
+  6882 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  7246 ms: Monitor received frame 17 with  4664 ms delay.
+  7246 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  7610 ms: Monitor received frame 18 with  4664 ms delay.
+  7610 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  7974 ms: Monitor received frame 19 with  4664 ms delay.
+  7974 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  8338 ms: Monitor received frame 20 with  4664 ms delay.
+  8338 ms:   0.364 seconds after previous frame,  2.747 FPS.
+  8338 ms: Monitor exits simulation.

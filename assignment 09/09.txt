@@ -1,0 +1,27 @@
+软连接：
+ln -s ~eecs222/public/video video
+cp ~eecs222/public/cannyA6_specc_ref.sc Canny_original.sc
+cp ~eecs222/public/cannyA6_systemc_ref.cpp Canny_original.cpp
+cp ~eecs222/public/MakefileA5SystemC ./
+
+开启systemc:
+setenv SYSTEMC /opt/pkg/systemc-2.3.1
+编译：
+g++ CannyA9.cpp -I$SYSTEMC/include -L$SYSTEMC/lib-linux64  -Xlinker -R -Xlinker $SYSTEMC/lib-linux64 -lsystemc -Wall -o cannyA9
+./cannyA8_step1
+gprof canny_1 gmon.out -p > flat-report
+gprof canny_1 gmon.out -q > callgraph-report_1
+
+
+
+limit stacksize 256 megabytes
+
+ln –s /users/grad2/doemer/eecs222/public/video video
+
+显示图像: 
+eog golfcart.pgm_s_0.60_l_0.30_h_0.80.pgm
+比较图片：
+./ImageDiff EngPlaza018_edges.pgm video/EngPlaza018_edges.pgm diff.pgm
+
+~eecs222/bin/turnin.sh
+

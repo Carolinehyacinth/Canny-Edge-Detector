@@ -1,0 +1,45 @@
+Step 1:
+Gaussian_Smooth						63.77%
+|------ Receive_Image		0.00%
+|------ Gaussian_Kernel		0.00%
+|------ BlurX				46.79%
+\------ BlurY				53.21%
+Derivative_X_Y						8.36%
+Magnitude_X_Y						5.25%
+Non_Max_Supp						10.82%
+Apply_Hysteresis					11.80%
+									100%
+
+explanation:
+Gaussian_Smooth						38.9%
+|------ Receive_Image		0.00%
+|------ Gaussian_Kernel		0.00%
+|------ BlurX				18.2%18.0
+\------ BlurY				20.7%19.5
+Derivative_X_Y						5.1%5.3
+Magnitude_X_Y						3.2%4.0
+Non_Max_Supp						6.6%6.8
+Apply_Hysteresis					7.2%7.1
+
+
+Gaussian_Smooth = 38.9 / 61 * 100% = 63.77%
+Receive_Image = 0.00 / 38.9 * 100% = 0.00%
+Gaussian_Kernel = 0.00 / 38.9 * 100% = 0.00%
+BlurX = 18.2 / 38.9 * 100% = 46.79%
+BlurY = 20.7 / 38.9 * 100% = 53.21%
+Derivative_X_Y = 5.1 / 61 * 100% = 8.36%
+Magnitude_X_Y = 3.2 / 61 * 100% = 5.25%
+Non_Max_Supp = 6.6 / 61 * 100% = 10.82%
+Apply_Hysteresis = 7.2 / 61 * 100% = 11.80%
+
+Step 2:
+Gaussian_Smooth					14.72 sec			60.08%
+|------ Receive_Image		0.00 sec		0.00%
+|------ Gaussian_Kernel		0.00 sec		0.00%
+|------ BlurX				6.78 sec		46.06%
+\------ BlurY				7.94 sec		53.94%
+Derivative_X_Y						2.37 sec		9.68%
+Magnitude_X_Y						2.11 sec		8.61%
+Non_Max_Supp						2.58 sec		10.53%
+Apply_Hysteresis					2.72 sec		11.10%
+													100%
